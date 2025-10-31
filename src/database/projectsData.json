@@ -1,0 +1,84 @@
+[
+{
+  "title": "WarmPaws - Pet Care in Winter",
+  "category": "Web App",
+  "description": "WarmPaws is a React-based platform for pet owners to manage winter pet care. Users can explore services, groomings, winter clothing, expert tips, and manage profiles with responsive design and dynamic UI.",
+  "technologies": "React, Tailwind CSS, Firebase, Framer Motion, AOS, React Router, LocalStorage",
+  "demoUrl": "https://warmpaws-by-fahim.netlify.app/",
+  "repoUrl": "https://github.com/fahim-5/warmpaws.git",
+  "image": "/assets/projects/warmpaws.jpg",
+  "featured": true
+},
+  {
+  "title": "AppSphere - Modern App Discovery Platform",
+  "category": "Web App",
+    "description": "AppSphere is a React-based app discovery platform for browsing, searching, and managing mobile apps. It features real-time search, app insights, ratings visualization, and installation management with a responsive, dynamic UI.",
+  "technologies": "React, JavaScript, CSS, Recharts, React Router, LocalStorage",
+  "demoUrl": "https://appsphere-by-fahim.netlify.app/",
+  "repoUrl": "https://github.com/fahim-5/AppSphere.git",
+  "image": "/assets/projects/appsphere.jpg",
+  "featured": true
+},
+  {
+    "title": "Customer Support System",
+    "category": "Web App",
+    "description": "A React-based customer support ticket management system with comprehensive administrative features. Includes ticket creation, status tracking, priority management, and resolution workflows. Demonstrates advanced state management, conditional rendering, and dynamic UI updates essential for enterprise-level application development.",
+    "technologies": "HTML, CSS, React, State Management",
+    "demoUrl": "https://customer-support-zone-by-fahim.netlify.app/",
+    "repoUrl": "https://github.com/fahim-5/Assignment_7.git",
+    "image": "/assets/projects/customer-support.jpg",
+    "featured": true
+  },
+ 
+  {
+    "title": "Green Earth: Dynamic Tree Planting App",
+    "category": "Web App",
+    "description": "An environmentally-focused web application that promotes tree plantation through an engaging user interface. Integrates with external APIs for comprehensive plant data, features dynamic cart management with real-time calculations, and provides detailed plant information. Built with mobile-first responsive design and optimized performance for seamless user interaction.",
+    "technologies": "HTML, CSS, JavaScript, API Integration",
+    "demoUrl": "https://green-earth-by-fahim-faysal.netlify.app/",
+    "repoUrl": "https://github.com/fahim-5/Assignment_6.git",
+    "image": "/assets/projects/green-earth.jpg",
+    "featured": true
+  },
+ 
+   {
+    "title": "Emergency Service",
+    "category": "Web App",
+    "description": "A dynamic web application demonstrating advanced DOM manipulation and asynchronous JavaScript capabilities. Features real-time data fetching, interactive UI components, and efficient state management without external frameworks. Serves as a technical showcase of pure JavaScript proficiency for modern web development roles.",
+    "technologies": "HTML, CSS, JavaScript, DOM Manipulation",
+    "demoUrl": "https://fahim-5.github.io/Assignment_5/",
+    "repoUrl": "https://github.com/fahim-5/Assignment_5.git",
+    "image": "/assets/projects/emergency-service.jpg",
+    "featured": false
+  },
+  {
+    "title": "Live Crime Reporting System",
+    "category": "Web App",
+    "description": "A comprehensive real-time crime reporting platform that enables citizens to report incidents with location tracking. The system features instant community alerts within a 1 km radius, collaborative incident verification through user validation, and automated escalation to law enforcement when multiple confirmations are received. Built with secure user authentication and real-time notifications to enhance public safety.",
+    "technologies": "React.js, Express.js, MySQL, Node.js, Socket.io",
+    "demoUrl": "https://crime-reporting-webapp.netlify.app/login.html",
+    "repoUrl": "https://github.com/fahim-5/Crime-rescue-Team.git",
+    "image": "/assets/projects/crime-report.jpg",
+    "featured": true
+  },
+  {
+    "title": "eCommerce Website",
+    "category": "Full Stack",
+    "description": "A fully functional eCommerce platform featuring product catalog management, shopping cart operations, and seamless user experience. Includes dynamic product filtering, persistent cart storage using local storage, responsive product grids, and intuitive checkout interface. Demonstrates strong front-end development skills with clean, maintainable code architecture.",
+    "technologies": "HTML, CSS, JavaScript, Local Storage",
+    "demoUrl": "https://fahim-5.github.io/Ecomerce-Website/",
+    "repoUrl": "https://github.com/fahim-5/Ecomerce-Website.git",
+    "image": "/assets/projects/ecommerce.jpg",
+    "featured": true
+  },
+  {
+    "title": "Personal Portfolio",
+    "category": "Web App",
+    "description": "A modern, responsive portfolio website showcasing professional achievements, technical skills, and project portfolio. Features smooth scroll navigation, interactive UI components, optimized performance, and cross-browser compatibility. Designed with attention to user experience and visual hierarchy to effectively present professional credentials.",
+    "technologies": "HTML, CSS, JavaScript, Responsive Design",
+    "demoUrl": "https://fahim-5.github.io/Fahim-Faysal/",
+    "repoUrl": "https://github.com/fahim-5/Fahim-Faysal.git",
+    "image": "/assets/projects/portfolio.jpg",
+    "featured": true
+  }
+]

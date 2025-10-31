@@ -1,0 +1,492 @@
+/* ======================================= */
+/* === BASE STYLES & LAYOUT (PICTURES) === */
+/* ======================================= */
+.pictures {
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #0a0a14 0%, #151528 100%);
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px; /* Increased from 1200px for wider layout */
+  margin: 0 auto;
+  padding: 0 40px; /* Increased padding for better spacing */
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  font-size: 2.5rem; /* Larger font size */
+  position: relative;
+  margin-bottom: 20px; /* More spacing */
+  color: var(--text-color);
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -15px;
+  width: 80px; /* Wider underline */
+  height: 5px; /* Thicker underline */
+  background: #00cec9;
+  border-radius: 3px;
+}
+
+/* =============================== */
+/* === PORTFOLIO / PICTURES LAYOUT === */
+/* =============================== */
+.portfolioContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  gap: 20px; /* Added gap between arrows and content */
+}
+
+.portfolioContent {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease-out;
+  width: 100%;
+  max-width: 1200px; /* Constrain content width */
+}
+
+.portfolioContent.animating {
+  pointer-events: none;
+}
+
+/* Desktop Pagination Arrows - Larger and more prominent */
+.navArrow {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  width: 60px; /* Larger arrows */
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin: 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.navArrow:hover:not(.disabled) {
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  color: #fff;
+  border-color: transparent;
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.navArrow.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Page Indicator - More prominent */
+.pageIndicator {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: var(--text-muted);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 25px;
+  border: 1px solid var(--border-color);
+}
+
+.currentPage {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 4px;
+}
+
+.totalPages {
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+/* ============================ */
+/* === WIDER PICTURES GRID === */
+/* ============================ */
+.picturesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns for desktop */
+  gap: 40px; /* Larger gap between cards */
+  padding: 20px 0;
+  width: 100%;
+}
+
+/* ============================ */
+/* === LARGER PICTURE CARD === */
+/* ============================ */
+.pictureCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px; /* Larger border radius */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
+  height: 100%;
+}
+
+.pictureCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  border-color: var(--primary-color);
+}
+
+.pictureCard.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pictureImage {
+  position: relative;
+  overflow: hidden;
+  height: 280px; /* Taller image area */
+  padding: 0;
+}
+
+.pictureImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pictureCard:hover .pictureImg {
+  transform: scale(1.1);
+}
+
+.pictureContent {
+  padding: 25px; /* More padding */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pictureTag {
+  display: inline-block;
+  padding: 6px 14px; /* Larger tag */
+  background: #00cec9;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bolder;
+  color: white;
+  margin-bottom: 15px;
+  align-self: flex-start;
+  letter-spacing: 0.5px;
+}
+
+.pictureContent h3 {
+  font-size: 20px; /* Larger title */
+  color: var(--text-color);
+  margin-bottom: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.pictureContent p {
+  font-size: 14px; /* Slightly larger text */
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+/* --- Enhanced View Picture Button --- */
+.viewPicture {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #00cec9;
+  color: #0f0e39;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.viewPicture:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+  font-size: 15;
+}
+
+/* ============================== */
+/* === ENHANCED MODAL STYLES === */
+/* ============================== */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 20, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  position: relative;
+  background: #0e0e1a;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 95%;
+  max-height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation: scaleIn 0.3s ease;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--border-color);
+}
+
+.modalImage {
+  max-width: 95%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 24px;
+  right: 39px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  color: var(--accent-color);
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ================================== */
+/* === MOBILE 'SEE MORE' BUTTON === */
+/* ================================== */
+.seeMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.seeMoreButton {
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  border: none;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.seeMoreButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+}
+
+/* ========================== */
+/* === MEDIA QUERIES === */
+/* ========================== */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 30px;
+  }
+  .closeBtn {
+    right: 33;
+  }
+
+  .picturesGrid {
+    gap: 30px;
+  }
+
+  .seeMoreButton {
+    min-width: 90%;
+  }
+
+  .sectionTitle {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 992px) {
+  .picturesGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    gap: 25px;
+  }
+  .seeMoreButton {
+    min-width: 90%;
+  }
+  .pictureImage {
+    height: 250px;
+  }
+  .closeBtn {
+    right: 33;
+  }
+  .sectionTitle {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile View */
+  .pictures {
+    padding: 60px 0;
+  }
+  .seeMoreButton {
+    min-width: 90%;
+  }
+  .container {
+    padding: 0 20px;
+  }
+
+  .sectionTitle {
+    margin-top: 25px;
+  }
+
+  .closeBtn {
+    right: 33;
+  }
+
+  /* Hide arrows and indicator on mobile */
+  .portfolioContainer {
+    flex-direction: column;
+  }
+
+  .navArrow {
+    display: none;
+  }
+
+  .pageIndicator {
+    display: none;
+  }
+
+  .picturesGrid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 25px;
+  }
+
+  .pictureImage {
+    height: 220px;
+  }
+
+  .pictureContent {
+    padding: 20px;
+  }
+  .sectionTitle {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+  .closeBtn {
+    right: 33;
+  }
+  .pictureImage {
+    height: 200px;
+  }
+  .seeMoreButton {
+    min-width: 90%;
+  }
+  .pictureContent {
+    padding: 18px;
+  }
+
+  .pictureContent h3 {
+    font-size: 18px;
+  }
+.sectionTitle{
+    margin-top: 25px;
+  }
+}

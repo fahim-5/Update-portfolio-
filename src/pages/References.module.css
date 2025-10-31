@@ -1,0 +1,586 @@
+/* --- Global Section Styling --- */
+.references {
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #0a0a14 0%, #151528 100%);
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -15px;
+  width: 60px;
+  height: 4px;
+  background: #00cec9;
+  border-radius: 2px;
+}
+
+
+/* --- References Grid and Card Styling (With Animation) --- */
+
+.referencesContainer {
+  position: relative;
+}
+
+.referencesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.referenceCard {
+  position: relative;
+  padding: 30px;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: opacity, transform;
+}
+
+/* Fade-in / Slide-up Animation */
+.referenceCard.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover Glow & Lift */
+.referenceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 206, 201, 0.2), 0 0 10px #00cec9;
+}
+
+/* Glass Styling */
+.glassCard {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Enhanced Hover for Glass */
+.glassCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 206, 201, 0.25), 0 0 15px #00cec9;
+}
+
+
+.refHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.referenceImage {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  border: 1px solid var(--primary-color);
+  flex-shrink: 0;
+}
+
+.referenceImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.refInfo h3 {
+  font-size: 1.25rem;
+  margin: 0 0 5px 0;
+  color: white;
+}
+
+.refPosition {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 0 3px 0;
+}
+
+.refCompany a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+.quote {
+  position: relative;
+  padding: 15px 15px 15px 45px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+
+
+
+.modalSubtitleInContact{
+  color: #00cec9;
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.quoteIcon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+  color: var(--primary-color);
+  opacity: 0.6;
+}
+
+.quote p {
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* --- Pagination Styles (Desktop) --- */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.paginationButton {
+  /* Default/Desktop size - excellent touch target */
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  flex-shrink: 0;
+  color: #00cec9;
+}
+
+.paginationButton:hover:not(.disabled) {
+  background:  #00cec9;
+  color: var(--background-color);
+  transform: scale(1.05);
+
+}
+
+.paginationButton.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  color: aliceblue;
+}
+
+.paginationDots {
+  display: flex;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.paginationDot {
+  /* This element provides the large, invisible touch target */
+  min-width: 25px; 
+  min-height: 25px;
+  border-radius: 50%;
+  background-color: transparent; /* Invisible base */
+  opacity: 1; 
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pseudo-element creates the small visual dot */
+.paginationDot::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #00cec9;
+  position: absolute;
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+.paginationDot.active::after {
+  background-color: rgb(54, 54, 103);
+  opacity: 0.5;
+  width: 6px;
+  height: 6px;
+}
+
+/* --- Mobile "See More" Button --- */
+.seeMoreContainer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.seeMoreButton {
+  padding: 12px 30px; 
+  min-height: 48px; /* Guaranteed minimum touch target height */
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+  font-size: 1rem; 
+}
+
+.seeMoreButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+
+/* --- NEW: Contact Button and Modal Styles --- */
+
+/* Contact Button on Card (top right) */
+.contactButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 8px 15px;
+  min-width: 44px; /* Guaranteed minimum touch target width */
+  min-height: 36px; /* Guaranteed minimum touch target height */
+  background: #00cec9;
+  color: var(--background-color);
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s, transform 0.2s;
+  z-index: 10;
+}
+
+.contactButton:hover {
+  background: var(--accent-color);
+  transform: scale(1.03);
+}
+
+/* Modal Styling */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  position: relative;
+  background-color: var(--card-bg-dark);
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.modalCloseButton:hover {
+  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+copyNotification
+
+.modalTitle {
+  font-size: 1.8rem;
+  margin-top: 0;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.modalSubtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  background-color: var(--glass-bg);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+}
+
+.contactIcon {
+  font-size: 1.2rem;
+  color: #00cec9;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.contactDetails {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contactValue {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  word-break: break-all;
+  transition: color 0.2s;
+}
+
+.contactValue:hover {
+  color: var(--primary-color);
+}
+
+.copyButton {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 5px;
+  transition: color 0.2s, background-color 0.2s;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.copyButton:hover {
+  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.copyNotification {
+  position: fixed;
+  bottom: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 101, 132, 0.5);
+  z-index: 1001;
+  animation: slideIn 0.3s ease-out, fadeOut 1.5s 1.5s forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translate(-50%, 50px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+
+/* --- Media Queries (Mobile Specific Adjustments) --- */
+
+@media (max-width: 992px) {
+  .referencesGrid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .seeMoreButton {
+    min-width: 95%;
+  }
+ .sectionTitle{
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .references {
+    padding: 60px 0;
+  }
+
+   .seeMoreButton {
+    min-width: 90%;
+  }
+  
+   .sectionTitle{
+    margin-top: 25px;
+  }
+
+  
+  .referencesGrid {
+    gap: 25px;
+  }
+
+  .referenceCard {
+    padding: 25px;
+  }
+  
+  .refHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .referenceImage {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  .refInfo {
+    text-align: center;
+  }
+
+  /* Pagination Improvements */
+  .pagination {
+    gap: 15px;
+  }
+  
+  .paginationButton {
+    width: 45px;
+    height: 45px;
+  }
+
+  .sectionTitle{
+    margin-top: 40px;
+  }
+  
+  .contactButton {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .modalContent {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px; 
+  }
+  
+
+   .sectionTitle{
+    margin-top: 40px;
+  }
+   .seeMoreButton {
+    min-width: 95%;
+  }
+  .referencesGrid {
+    gap: 20px;
+  }
+  
+  .referenceCard {
+    padding: 20px;
+  }
+  
+  /* Pagination Improvements for smallest screens */
+  .pagination {
+    gap: 10px;
+  }
+  
+  .paginationButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  /* Increased touch area for dots on smallest screens */
+  .paginationDot {
+    min-width: 30px; 
+    min-height: 30px;
+  }
+
+  .seeMoreButton {
+    padding: 10px 25px;
+  }
+}
+
+/* Smooth transitions for page changes */
+.referencesGrid {
+  transition: opacity 0.3s ease;
+}
+
+.referencesContainer.animating .referencesGrid {
+  opacity: 0;
+  pointer-events: none;
+}

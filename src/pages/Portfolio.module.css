@@ -1,0 +1,741 @@
+.portfolio {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  width: 100%;
+  background-color: #0a0a14;
+  padding-bottom: 20px;
+  padding-top: 57px;
+}
+
+.container {
+  width: 100%;
+  background-color: #0a0a14;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  padding-top: 80px;
+  font-size: 30px;
+  position: relative;
+  margin-bottom: 30px;
+  margin-left: 65px;
+  color: var(--text-color);
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 4px;
+  background:  #00cec9;
+  border-radius: 2px;
+}
+
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* --- Project Card Styling with Animation & Glow --- */
+.projectCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--border-color);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(25px);
+  will-change: opacity, transform, box-shadow;
+}
+
+/* Fade-in / Slide-up Animation */
+.projectCard.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover Glow & Lift */
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 206, 201, 0.2), 0 0 10px #00cec9;
+}
+
+/* Optional: stronger glow for glass effect (like previous glassCard) */
+.projectCard.glassHover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 206, 201, 0.25), 0 0 15px #00cec9;
+}
+
+.projectImage {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.projectImage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8));
+  z-index: 1;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.projectCard:hover .projectImage::before {
+  opacity: 0.5;
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover .projectImage img {
+  transform: scale(1.05);
+}
+
+.projectContent {
+  padding: 25px;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.projectTag {
+  display: inline-block;
+  padding: 5px 12px;
+  background:  #00cec9;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight:bolder;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.projectContent h3 {
+  font-size: 20px;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.projectContent p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.projectTools {
+  margin-bottom: 20px;
+}
+
+.projectTools h4 {
+  font-size: 14px;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.toolsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.toolTag {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(0, 188, 212, 0.1);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.toolTag:hover {
+  background: rgba(0, 188, 212, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ===== TECHNOLOGY TAGS STYLES ===== */
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.techTag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  line-height: 1.2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-color);
+}
+
+.techTag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Technology-specific colors with glass background */
+.techTag.html {
+  background: rgba(227, 79, 38, 0.15);
+  border-color: rgba(227, 79, 38, 0.4);
+  color: #ff8e7a;
+}
+
+.techTag.css {
+  background: rgba(21, 114, 182, 0.15);
+  border-color: rgba(21, 114, 182, 0.4);
+  color: #6bc2ff;
+}
+
+.techTag.javascript {
+  background: rgba(247, 223, 30, 0.15);
+  border-color: rgba(247, 223, 30, 0.4);
+  color: #f7df1e;
+}
+
+.techTag.react {
+  background: rgba(97, 218, 251, 0.15);
+  border-color: rgba(97, 218, 251, 0.4);
+  color: #61dafb;
+}
+
+.techTag.node {
+  background: rgba(51, 153, 51, 0.15);
+  border-color: rgba(51, 153, 51, 0.4);
+  color: #66cc66;
+}
+
+.techTag.express {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-color);
+}
+
+.techTag.mongodb {
+  background: rgba(71, 162, 72, 0.15);
+  border-color: rgba(71, 162, 72, 0.4);
+  color: #67c967;
+}
+
+.techTag.mysql {
+  background: rgba(0, 117, 143, 0.15);
+  border-color: rgba(0, 117, 143, 0.4);
+  color: #00bcd4;
+}
+
+.techTag.python {
+  background: rgba(55, 118, 171, 0.15);
+  border-color: rgba(55, 118, 171, 0.4);
+  color: #4b8bbe;
+}
+
+.techTag.java {
+  background: rgba(237, 139, 0, 0.15);
+  border-color: rgba(237, 139, 0, 0.4);
+  color: #ffa726;
+}
+
+.techTag.php {
+  background: rgba(119, 123, 180, 0.15);
+  border-color: rgba(119, 123, 180, 0.4);
+  color: #8892bf;
+}
+
+.techTag.bootstrap {
+  background: rgba(121, 82, 179, 0.15);
+  border-color: rgba(121, 82, 179, 0.4);
+  color: #9370db;
+}
+
+.techTag.tailwind {
+  background: rgba(56, 178, 172, 0.15);
+  border-color: rgba(56, 178, 172, 0.4);
+  color: #4fd1c7;
+}
+
+.techTag.git {
+  background: rgba(240, 80, 50, 0.15);
+  border-color: rgba(240, 80, 50, 0.4);
+  color: #f14e32;
+}
+
+.techTag.github {
+  background: rgba(51, 51, 51, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-color);
+}
+
+.techTag.firebase {
+  background: rgba(255, 202, 40, 0.15);
+  border-color: rgba(255, 202, 40, 0.4);
+  color: #ffd54f;
+}
+
+.techTag.api {
+  background: rgba(255, 107, 107, 0.15);
+  border-color: rgba(255, 107, 107, 0.4);
+  color: #ff8e8e;
+}
+
+.techTag.rest {
+  background: rgba(255, 107, 107, 0.15);
+  border-color: rgba(255, 107, 107, 0.4);
+  color: #ff8e8e;
+}
+
+.techTag.json {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-color);
+}
+
+.techTag.default {
+  background: rgba(0, 188, 212, 0.15);
+  border-color: rgba(0, 188, 212, 0.4);
+  color: var(--primary-color);
+}
+
+/* ===== PROJECT ACTIONS - PERFECTLY RESPONSIVE ===== */
+.projectActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.viewProject,
+.viewSource {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.viewProject {
+  background:  #00cec9;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.viewSource {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+.viewProject:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: rgb(8, 21, 68);
+  font-size: 15px;
+}
+
+.viewSource:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+}
+
+.viewProject i,
+.viewSource i {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.viewProject:hover i {
+  transform: translateX(3px);
+}
+
+.viewSource:hover i {
+  transform: translateX(3px);
+}
+
+/* ===== PAGINATION STYLES ===== */
+.portfolioContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+.portfolioContent {
+  flex: 1;
+  transition: opacity 0.3s ease;
+}
+
+.portfolioContent.animating {
+  opacity: 0.7;
+}
+
+.navArrow {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.navArrow:hover:not(.disabled) {
+  background: #00cec9;
+  border-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.navArrow.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.pageIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.currentPage {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.pageSeparator {
+  opacity: 0.6;
+}
+
+.totalPages {
+  opacity: 0.8;
+}
+
+/* ===== MOBILE "SEE MORE" BUTTON ===== */
+.seeMoreContainer {
+  text-align: center;
+  margin-top: 25px;
+  display: none;
+}
+
+.seeMoreButton {
+  padding: 14px 35px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 280px;
+}
+
+.seeMoreButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== RESPONSIVE MEDIA QUERIES ===== */
+
+/* Large Desktop Screens */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+
+  .portfolioGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+
+  .sectionTitle {
+      margin-bottom: 20px;
+    padding-top: 35px;
+  }
+}
+
+/* Tablet Devices (768px - 1199px) */
+@media (max-width: 1199px) {
+  .portfolioGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  .sectionTitle {
+    margin-bottom: 20px;
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 100%;
+    padding: 0 25px;
+  }
+
+  .projectContent {
+    padding: 20px;
+  }
+  .sectionTitle {
+       margin-bottom: 20px;
+    padding-top: 30px;
+  }
+
+  .viewProject,
+  .viewSource {
+    padding: 9px 18px;
+    font-size: 13px;
+    min-width: 130px;
+  }
+}
+
+/* Mobile Devices (577px - 768px) */
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .sectionTitle {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+    font-size: 26px;
+   
+     margin-bottom: 20px;
+    padding-top: 30px;
+  }
+
+  .sectionTitle::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .portfolioGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .projectContent {
+    padding: 18px;
+  }
+
+  .projectContent h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .projectContent p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .projectTools h4 {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .toolsContainer {
+    justify-content: center;
+  }
+
+  .toolTag {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  /* Perfect Mobile Button Layout */
+  .projectActions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .viewProject,
+  .viewSource {
+    width: 100%;
+    min-width: auto;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    margin: 0;
+  }
+
+  /* Hide desktop navigation on mobile */
+  .navArrow,
+  .pageIndicator {
+    display: none;
+  }
+
+  /* Show mobile see more button */
+  .seeMoreContainer {
+    display: block;
+  }
+
+  .portfolioContainer {
+    gap: 0;
+    flex-direction: column;
+  }
+}
+
+/* Small Mobile Devices (up to 576px) */
+@media (max-width: 576px) {
+  .portfolio {
+    padding: 50px 0;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .sectionTitle {
+      margin-bottom: 20px;
+    padding-top: 30px;
+
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .portfolioGrid {
+    gap: 15px;
+  }
+
+  .projectImage {
+    height: 180px;
+  }
+
+  .projectContent {
+    padding: 15px;
+  }
+
+  .projectContent h3 {
+    font-size: 17px;
+  }
+
+  .projectContent p {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .techTags {
+    gap: 4px;
+    margin: 10px 0;
+    justify-content: center;
+  }
+
+  .techTag {
+    font-size: 9px;
+    padding: 3px 8px;
+  }
+
+  .projectActions {
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  .viewProject,
+  .viewSource {
+    padding: 11px 18px;
+    font-size: 14px;
+  }
+
+  .seeMoreButton {
+    padding: 13px 30px;
+    font-size: 15px;
+    min-width: 90%;
+  }
+}
+
+/* Extra Small Devices (up to 400px) */
+@media (max-width: 400px) {
+  .projectContent {
+    padding: 12px;
+  }
+  .sectionTitle {
+    padding-top: 30px;
+       margin-bottom: 20px;
+  }
+
+  .viewProject,
+  .viewSource {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .seeMoreButton {
+    padding: 12px 25px;
+    font-size: 14px;
+    min-width: 90%;
+  }
+
+  .techTag {
+    font-size: 8px;
+    padding: 2px 6px;
+  }
+}

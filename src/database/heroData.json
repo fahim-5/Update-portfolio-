@@ -1,0 +1,28 @@
+{
+  "greeting": "Hello, I'm",
+  "name": "Fahim",
+  "lastName": "Faysal",
+  "description": "Full-Stack Software Developer & Data Strategist. I engineer scalable applications, craft intuitive user experiences, and transform ideas into high-impact solutions through elegant code and data-driven insights. Let’s create the future, one line of code at a time.",
+  "jobTitle": "Software Developer",
+  "stats": [
+    { "value": "0+", "label": "Years Experience" },
+    { "value": "8+", "label": "Projects Completed" },
+    { "value": "0", "label": "Happy Clients" }
+  ],
+  "buttonText": "Get In Touch",
+  "cvButtonText": "View My CV",
+  "cvLink": "assets/Fahim Faysal.pdf",
+  "profileImageUrl": "../assets/Home.jpg",
+
+  "personalInfo": {
+    "email": "mfaysal223224@bscse.uiu.ac.bd",
+    "phone": "+8801774071130",
+    "location": "Notun Bazar, Badda, Dhaka, Bangladesh",
+    "socialLinks": {
+      "linkedin": "https://www.linkedin.com/in/fahim-faysal-6a6425253/",
+      "github": "https://github.com/fahim-5",
+      "twitter": "https://x.com/bafu_44",
+      "instagram": "https://www.instagram.com/bafu.06/"
+    }
+  }
+}
