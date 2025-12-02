@@ -3,16 +3,21 @@ import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaGithub } from 'reac
 import styles from './Portfolio.module.css';
 import projectsData from '../database/projectsData.json';
 
-// --- Image imports (unchanged) ---
+// --- Direct image imports ---
 import warmpaws from '../assets/projectImg/warmpaws.jpg';
 import appsphere from '../assets/projectImg/appsphere.jpeg';
 import crimeReportImage from '../assets/projectImg/crimeReport.jpg';
 import ecommerceImage from '../assets/projectImg/ecommerce.jpg';
 import portfolioImage from '../assets/projectImg/portfolio.jpg';
-const emergencyServiceImage = new URL('../assets/projectImg/Emergencyservice.jpeg', import.meta.url).href;
-const greenEarthImage = new URL('../assets/projectImg/GreenEarth.jpeg', import.meta.url).href;
-const customerSupportImage = new URL('../assets/projectImg/CustomerService.jpg', import.meta.url).href;
-const placeholderImage = '';
+import emergencyServiceImage from '../assets/projectImg/Emergencyservice.jpeg';
+import greenEarthImage from '../assets/projectImg/GreenEarth.jpeg';
+import customerSupportImage from '../assets/projectImg/CustomerService.jpg';
+// IMPORTANT: You need to import the TravelEase image, not GoRide
+// Since TravelEase uses GoRide's demo URL, you can use the same image if that's what you want
+import goRideImage from '../assets/projectImg/goride.jpg'; // This is actually for TravelEase project
+
+// If you have a separate image for TravelEase, import it:
+// import travelEaseImage from '../assets/projectImg/travel-ease.jpg';
 
 const Portfolio = () => {
   const projectItems = useRef([]);
@@ -22,16 +27,28 @@ const Portfolio = () => {
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Make sure the keys in fallbackImages match EXACTLY with project titles from projectsData.json
   const fallbackImages = {
+    'TravelEase - Vehicle Booking Platform': goRideImage, // Fixed: Changed key to match JSON
     'WarmPaws - Pet Care in Winter': warmpaws,
-   'AppSphere - Modern App Discovery Platform': appsphere,
+    'AppSphere - Modern App Discovery Platform': appsphere,
     'Live Crime Reporting System': crimeReportImage,
     'eCommerce Website': ecommerceImage,
     'Personal Portfolio': portfolioImage,
     'Emergency Service': emergencyServiceImage,
     'Green Earth: Dynamic Tree Planting App': greenEarthImage,
     'Customer Support System': customerSupportImage,
+    // Removed "GoRide - Ride Sharing Application" since it doesn't exist in your JSON
   };
+
+  // Add a placeholder image
+  const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjEyNDJjIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlByb2plY3QgSW1hZ2U8L3RleHQ+PC9zdmc+';
+
+  // --- Debug logging ---
+  useEffect(() => {
+    console.log('Available fallback images:', Object.keys(fallbackImages));
+    console.log('Projects from JSON:', projectsData.map(p => p.title));
+  }, []);
 
   // --- Pagination setup ---
   const projectsPerPage = 3;
@@ -46,11 +63,52 @@ const Portfolio = () => {
         (currentPage + 1) * projectsPerPage
       );
 
-  const handleImageError = (title) => {
-    setImageSources((prev) => ({
-      ...prev,
-      [title]: fallbackImages[title] || placeholderImage,
-    }));
+  const handleImageError = (title, e) => {
+    console.log(`Image failed to load for: "${title}"`);
+    console.log(`Looking for fallback image with key: "${title}"`);
+    
+    const fallback = fallbackImages[title];
+    console.log(`Found fallback: ${fallback ? 'Yes' : 'No'}`);
+    
+    if (fallback) {
+      // If we have a fallback, update the source
+      setImageSources((prev) => ({
+        ...prev,
+        [title]: fallback,
+      }));
+    } else {
+      // If no fallback, set to placeholder
+      console.log(`No fallback found for "${title}", using placeholder`);
+      e.target.src = placeholderImage;
+      e.target.onerror = null; // Prevent infinite loop
+    }
+  };
+
+  // Helper function to get image source with logging
+  const getImageSource = (project) => {
+    console.log(`Getting image for: "${project.title}"`);
+    
+    // First check if we have a manually set source (from error handling)
+    if (imageSources[project.title]) {
+      console.log(`Using cached image source for "${project.title}"`);
+      return imageSources[project.title];
+    }
+    
+    // Then check fallback images
+    if (fallbackImages[project.title]) {
+      console.log(`Using fallback image for "${project.title}"`);
+      return fallbackImages[project.title];
+    }
+    
+    // Then check if project has an image URL from JSON
+    if (project.image) {
+      console.log(`Using JSON image URL for "${project.title}": ${project.image}`);
+      return project.image;
+    }
+    
+    // Finally, use placeholder
+    console.log(`No image found for "${project.title}", using placeholder`);
+    return placeholderImage;
   };
 
   // --- Pagination Controls ---
@@ -122,15 +180,15 @@ const Portfolio = () => {
             <div className={styles.portfolioGrid}>
               {currentProjects.map((project, index) => (
                 <div
-                  key={`${currentPage}-${index}`}
+                  key={`${currentPage}-${index}-${project.title}`}
                   className={`${styles.projectCard} ${styles.glassCard}`}
                   ref={(el) => (projectItems.current[index] = el)}
                 >
                   <div className={styles.projectImage}>
                     <img
-                      src={imageSources[project.title] || fallbackImages[project.title] || project.image || placeholderImage}
+                      src={getImageSource(project)}
                       alt={project.title}
-                      onError={() => handleImageError(project.title)}
+                      onError={(e) => handleImageError(project.title, e)}
                       loading="lazy"
                     />
                     <div className={styles.projectOverlay}>
@@ -204,7 +262,7 @@ const Portfolio = () => {
           )}
         </div>
 
-        {/* === Mobile “See More / See Less” Button === */}
+        {/* === Mobile "See More / See Less" Button === */}
         {isMobile && projectsData.length > 3 && (
           <div className={styles.seeMoreContainer}>
             <button
